@@ -1,0 +1,271 @@
+/*******************COLOR PANEL*******************/
+$body-bg: linear-gradient(315deg, #5369bb 0%, #ffc1ff 100%);;
+$primary-bg: linear-gradient(315deg, #195dc4 0%, #2a91cc 100%);
+$welcome-text: #ebebeb;
+
+$title: #f3f3f3;
+$card-bg: #f8d68c;
+$card-bg-selected: #f5ce80;
+$card-border: #43daf5;
+$card-text: #1a67c5;
+$circle-bg: #ba89e7;
+
+$card-bg--done: #51bd1f;
+$card-border--done: #51bd1f;
+$card-text--done: #51bd1f;
+$circle-bg--done: #51bd1f;
+
+$inputContainer-bg: #93dbfc;
+$inputField: #f1d8a1;
+$inputButton: #f1d8a1;
+$inputBorder: #22a3c4;
+$buttonBorder: #22a3c4;
+$inputText: #1e92df;
+$flashRed: rgb(253, 67, 107);
+/*************************************************/
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+body {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  font-size: 16px;
+  margin: 0;
+  background: $body-bg;
+}
+
+.root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $primary-bg;
+}
+
+.contentContainer {
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  padding-top: 40px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.header {
+  margin: 0;
+  margin-left: 30px;
+  margin-bottom: 5px;
+  font-size: 2.2rem;
+  font-family: 'Patua One', cursive;
+  text-shadow: 2px solid;
+  color: $title;
+  align-self: flex-start;
+  order: 1;
+  text-shadow:
+    -0.2px  0.2px 0 #533288,
+     0.2px  0.2px 0 #533288,
+     0.2px -0.2px 0 #533288,
+    -0.2px -0.2px 0 #533288;
+}
+
+.welcomeTip {
+  order: 2;
+  margin-top: 40%;
+  width: 68%;
+  height: 6rem;
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  color: $welcome-text;
+  line-height: 1.4;
+  display: none;
+}
+
+.todo {
+  width: 18rem;
+  min-width: 18rem;
+  max-width: 18rem;
+  height: 4.5rem;
+  min-height: 4.5rem;
+  max-height: 4.5rem;
+  text-align: center;
+  order: 3;
+  background: $card-bg;
+  border: 5px solid $card-border;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 30px;
+  @include border-radius(18px);
+
+  &:hover {
+    background: $card-bg-selected;
+  }
+
+  &--done {
+    background: rgb(240, 248, 242);
+    border: 5px solid $card-border--done;
+    order: 4;
+    opacity: 0.4;
+    z-index: 2;
+  }
+
+  &__circle {
+    width: 2.6rem;
+    height: 2.6rem;
+    padding: 0;
+    margin-left: 15px;
+    border: 4px solid $card-border;
+    display: grid;
+    place-items: center;
+    background: $circle-bg;
+    @include border-radius(50%);
+  }
+
+  &__emoji {
+    font-size: 1.55rem;
+    margin: 0;
+    margin-top: 2px;
+    margin-left: 1px;
+  }
+
+  &__text {
+    color: $card-text;
+    font-size: 1.2rem;
+    letter-spacing: 0.05rem;
+    font-family: 'Open Sans', sans-serif;
+
+    &--done {
+      text-decoration: line-through;
+    }
+  }
+
+  &__cross {
+    visibility: hidden;
+    font-size: 1.5rem;
+    color: rgb(63, 112, 17);
+    z-index: 10;
+
+    &--done {
+      visibility: visible;
+    }
+  }
+}
+
+
+
+
+.inputContainer {
+  background: $inputContainer-bg;
+  width: 100%;
+  height: 6.5rem;
+  min-height: 6.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  box-shadow: 0px 0 10px #8548a1cc;
+  order: 9;
+  z-index: 10;
+  margin-top: auto;
+  position: sticky;
+  bottom: -1px;
+
+
+  &__form {
+    width: 82%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__input {
+    width: 75%;
+    text-align: center;
+    border: 4px solid $inputBorder;
+    background: $inputField;
+    color: $inputText;
+    font-size: 1.2rem;
+    @include border-radius(15px);
+
+    &--flashRed {
+      background: $flashRed;
+      border-color: $flashRed;
+    }
+  }
+
+  &__button {
+    width: 18%;
+    border: 4px solid $buttonBorder;
+    font-size: 1.8rem;
+    color: $inputText;
+    background: $inputButton;
+    @include border-radius(15px);
+
+    &--flashRed {
+      background: $flashRed;
+      border-color: $flashRed;
+      color: rgb(244, 236, 216);
+    }
+  }
+
+  &--flashRed {
+    // background: $flashRed;
+  }
+}
+
+
+
+
+
+
+
+
+
+@media all and (min-width: 500px) {
+  body {
+    display: grid;
+    place-items: center;
+  }
+
+  .App {
+    width: 375px;
+    // height: 80%;
+    min-height: 620px;
+    max-height: 812px;
+    @include border-radius(30px);
+    box-shadow: 0 0 0 3px black,
+                0 0 0 14px rgb(238, 219, 250);
+  }
+
+  .contentContainer {
+    @include border-radius(30px);
+    box-shadow: 0px 2px 20px 4px rgb(252, 245, 233),
+                0px 0px 20px 4px rgb(252, 245, 233);
+  }
+
+  .inputContainer {
+    @include border-radius(0px 0px 30px 30px);
+  }
+}

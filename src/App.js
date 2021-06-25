@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable */
+import './App.scss';
+import { useState, useEffect } from 'react';
+import Header from './components/Header'
+import Welcome from './components/Welcome';
+import Input from './components/Input';
+import Todolist from './components/Todolist';
 
-function App() {
+
+const App = () => {
+
+  const [showWelcome, toggleShowWelcome] = useState(false);
+  const [todoDB, updateTodoDB] = useState([]);
+  const [input, setInput] = useState('');
+
+
+
+
+
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section className="contentContainer">
+
+      <Header />
+
+      <Welcome />
+
+      <Todolist todoDB={todoDB} updateTodoDB={updateTodoDB} />
+
+      <Input
+        todoDB={todoDB}
+        updateTodoDB={updateTodoDB}
+        input={input}
+        setInput={setInput}
+      />
+
+      </section>
     </div>
   );
 }
+
+
+
+
+
+
 
 export default App;
