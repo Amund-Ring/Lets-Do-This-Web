@@ -1,28 +1,29 @@
 /*******************COLOR PANEL*******************/
-$body-bg: linear-gradient(315deg, #5369bb 0%, #ffc1ff 100%);;
-$primary-bg: linear-gradient(315deg, #195dc4 0%, #2a91cc 100%);
-$welcome-text: #ebebeb;
+$body_bg: linear-gradient(315deg, #5369bb 0%, #ffc1ff 100%);;
+$primary_bg: linear-gradient(315deg, #195dc4 0%, #2a91cc 100%);
+$welcome_text: #ebebeb;
 
-$title: #f3f3f3;
-$card-bg: #f8d68c;
-$card-bg-selected: #f5ce80;
-$card-border: #43daf5;
-$card-text: #1a67c5;
-$circle-bg: #ba89e7;
-$todo__cross: hsla(213, 77%, 44%, 0.7);
+$header: #f3f3f3;
+$todo_bg: #f8d68c;
+$todo_bg-selected: #f5ce80;
+$todo_border: #43daf5;
+$todo_text: #1a67c5;
+$circle_bg: #ba89e7;
 
-$card-bg--done: #51bd1f;
-$card-border--done: #51bd1f;
-$card-text--done: #51bd1f;
-$circle-bg--done: #51bd1f;
+$todo_bg-done: #51bd1f;
+$todo_border-done: #51bd1f;
+$todo_text-done: #51bd1f;
+$circle_bg-done: #51bd1f;
+$todo_cross: rgba(26, 104, 199, 0.7);
+$todo_cross-hover: #ee6516;
 
-$inputContainer-bg: #93dbfc;
+$inputContainer_bg: #93dbfc;
 $inputField: #f1d8a1;
 $inputButton: #f1d8a1;
 $inputBorder: #22a3c4;
 $buttonBorder: #22a3c4;
 $inputText: #1e92df;
-$inputText--flash: #1e92df5a;
+$inputText-flash: #1e92df5a;
 $flashRed: rgba(253, 67, 107, 0.500);
 $flashGreen: rgba(55, 203, 94, 0.500);
 /*************************************************/
@@ -40,7 +41,7 @@ body {
   height: 100vh;
   font-size: 16px;
   margin: 0;
-  background: $body-bg;
+  background: $body_bg;
 }
 
 .root {
@@ -53,7 +54,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: $primary-bg;
+  background: $primary_bg;
 }
 
 .contentContainer {
@@ -81,7 +82,7 @@ body {
   font-size: 2.2rem;
   font-family: 'Patua One', cursive;
   text-shadow: 2px solid;
-  color: $title;
+  color: $header;
   align-self: flex-start;
   order: 1;
   text-shadow:
@@ -98,7 +99,7 @@ body {
   height: 6rem;
   font-size: 1rem;
   font-family: 'Open Sans', sans-serif;
-  color: $welcome-text;
+  color: $welcome_text;
   line-height: 1.4;
   
   &--hide {
@@ -115,8 +116,8 @@ body {
   max-height: 4.5rem;
   text-align: center;
   order: 3;
-  background: $card-bg;
-  border: 5px solid $card-border;
+  background: $todo_bg;
+  border: 5px solid $todo_border;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -124,12 +125,12 @@ body {
   @include border-radius(18px);
 
   &:hover {
-    background: $card-bg-selected;
+    background: $todo_bg-selected;
   }
 
   &--done {
     background: rgb(240, 248, 242);
-    border: 5px solid $card-border--done;
+    border: 5px solid $todo_border-done;
     order: 4;
     opacity: 0.4;
     z-index: 2;
@@ -140,10 +141,10 @@ body {
     height: 2.6rem;
     padding: 0;
     margin-left: 15px;
-    border: 4px solid $card-border;
+    border: 4px solid $todo_border;
     display: grid;
     place-items: center;
-    background: $circle-bg;
+    background: $circle_bg;
     @include border-radius(50%);
   }
 
@@ -155,7 +156,7 @@ body {
   }
 
   &__text {
-    color: $card-text;
+    color: $todo_text;
     font-size: 1.2rem;
     letter-spacing: 0.05rem;
     font-family: 'Open Sans', sans-serif;
@@ -168,9 +169,13 @@ body {
   &__cross {
     visibility: hidden;
     font-size: 1.5rem;
-    color: $todo__cross;
+    color: $todo_cross;
     z-index: 10;
     margin-top: 5px;
+
+    &:hover{
+      color: $todo_cross-hover;
+    }
 
     &--done {
       visibility: visible;
@@ -182,7 +187,7 @@ body {
 
 
 .inputContainer {
-  background: $inputContainer-bg;
+  background: $inputContainer_bg;
   width: 100%;
   height: 6.5rem;
   min-height: 6.5rem;
@@ -210,7 +215,7 @@ body {
   &__input {
     width: 75%;
     text-align: center;
-    border: 4px solid $inputBorder;
+    border: 3px solid $inputBorder;
     background: $inputField;
     color: $inputText;
     font-size: 1.2rem;
@@ -236,7 +241,7 @@ body {
 
   &__button {
     width: 18%;
-    border: 4px solid $buttonBorder;
+    border: 3px solid $buttonBorder;
     font-size: 1.8rem;
     color: $inputText;
     background: $inputButton;
@@ -245,13 +250,13 @@ body {
     &--flashRed {
       background: $flashRed;
       border-color: $flashRed;
-      color: $inputText--flash;
+      color: $inputText-flash;
     }
 
     &--flashGreen {
       background: $flashGreen;
       border-color: $flashGreen;
-      color: $inputText--flash;
+      color: $inputText-flash;
     }
   }
 }

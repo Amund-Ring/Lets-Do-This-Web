@@ -24,36 +24,29 @@ const App = () => {
     localStorage.setItem('todoDB', JSON.stringify(todoDB));
   };
 
-
   useEffect(() => {
     getFromLocalStorage();
   }, []);
   
   useEffect(() => {
     saveToLocalstorage();
+    toggleWelcome(todoDB.length === 0);
   });
 
-  // toggleWelcome(todoDB.length === 0);
-
   return (
-    <div className="App">
+    <main className="App">
       <section className="contentContainer">
-
-      <Header />
-
-      <Welcome showWelcome={showWelcome} />
-
-      <Todolist todoDB={todoDB} updateTodoDB={updateTodoDB} toggleWelcome={toggleWelcome} />
-
-      <Input
-        todoDB={todoDB}
-        updateTodoDB={updateTodoDB}
-        input={input}
-        setInput={setInput}
-      />
-
+        <Header />
+        <Welcome showWelcome={showWelcome} />
+        <Todolist todoDB={todoDB} updateTodoDB={updateTodoDB} toggleWelcome={toggleWelcome} />
+        <Input
+          todoDB={todoDB}
+          updateTodoDB={updateTodoDB}
+          input={input}
+          setInput={setInput}
+        />
       </section>
-    </div>
+    </main>
   );
 };
 
