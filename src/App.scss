@@ -1,5 +1,5 @@
 /*******************COLOR PANEL*******************/
-$body_bg: linear-gradient(315deg, #5369bb 0%, #ffc1ff 100%);;
+$body_bg: linear-gradient(315deg, #465dad 0%, #e79ee7 100%);;
 $primary_bg: linear-gradient(315deg, #195dc4 0%, #2a91cc 100%);
 $welcome_text: #ebebeb;
 
@@ -183,9 +183,6 @@ body {
   }
 }
 
-
-
-
 .inputContainer {
   background: $inputContainer_bg;
   width: 100%;
@@ -203,7 +200,6 @@ body {
   margin-top: auto;
   position: sticky;
   bottom: -1px;
-
 
   &__form {
     width: 82%;
@@ -261,13 +257,21 @@ body {
   }
 }
 
+.paddingBlock {
+  display: none;
+}
 
-
-
-
-
-
-
+@-moz-document url-prefix() {
+  .paddingBlock {
+    display: inline;
+    opacity: 0.3;
+    width: 100%;
+    height: 6.5rem;
+    min-height: 6.5rem;
+    order: 8;
+    @include border-radius(0 0 30px 30px);
+  }
+}
 
 @media all and (min-width: 500px) {
   body {
@@ -293,5 +297,26 @@ body {
 
   .inputContainer {
     @include border-radius(0px 0px 30px 30px);
+  }
+}
+
+@media all and (max-width: 330px) {
+  .todo {
+    width: 14rem;
+    min-width: 14rem;
+    max-width: 14rem;
+    height: 4rem;
+    min-height: 4rem;
+    max-height: 4rem;
+
+    &__circle {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .welcomeTip {
+    font-size: 0.8rem;
+    margin-top: 100px;
   }
 }

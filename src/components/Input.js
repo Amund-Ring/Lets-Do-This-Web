@@ -71,12 +71,15 @@ const Input = ({
   };
 
   return (
-    <aside className="inputContainer">
-      <form className="inputContainer__form">
-        <input onChange={inputHandler} value={input} type="search" className="inputContainer__input"></input>
-        <button onClick={submitHandler} type="submit" className="inputContainer__button">+</button>
-      </form>
-    </aside>
+    <>
+      <aside className="inputContainer">
+        <form className="inputContainer__form">
+          <input onChange={inputHandler} value={input} type="search" className="inputContainer__input"></input>
+          <button onClick={submitHandler} type="submit" className="inputContainer__button">+</button>
+        </form>
+      </aside>
+      <span className="paddingBlock"></span>
+    </>
   );
 };
 
