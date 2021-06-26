@@ -1,29 +1,20 @@
-/* eslint-disable */
-
-const Todo = ({todo, todoDB, updateTodoDB}) => {
-
+const Todo = ({ todo, todoDB, updateTodoDB }) => {
   const toggleCompleted = () => {
-
-    console.log('two things same time?');
-
     updateTodoDB(todoDB.map(t => {
       if (t.id === todo.id) {
         return {
-          ...t, completed: !t.completed
-        }
+          ...t, completed: !t.completed,
+        };
       }
-
       return t;
     }));
-  }
+  };
 
-  const deleteTodo = (e) => {
-    console.log(e.target);
+  const deleteTodo = e => {
     e.preventDefault();
     e.stopPropagation();
     updateTodoDB(todoDB.filter(t => t.id !== todo.id));
-  }
-
+  };
 
   return (
     <div onClick={toggleCompleted} className={`todo ${todo.completed ? 'todo--done' : ''}`} id={todo.id}>
@@ -36,7 +27,6 @@ const Todo = ({todo, todoDB, updateTodoDB}) => {
       </span>
     </div>
   );
-
-}
+};
 
 export default Todo;

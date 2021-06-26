@@ -1,1 +1,4 @@
-{ "extends": "salt" }
+{
+  "extends": "salt",
+  "parser": "babel-eslint"
+}

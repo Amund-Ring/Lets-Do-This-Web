@@ -9,6 +9,7 @@ $card-bg-selected: #f5ce80;
 $card-border: #43daf5;
 $card-text: #1a67c5;
 $circle-bg: #ba89e7;
+$todo__cross: hsla(213, 77%, 44%, 0.7);
 
 $card-bg--done: #51bd1f;
 $card-border--done: #51bd1f;
@@ -21,7 +22,9 @@ $inputButton: #f1d8a1;
 $inputBorder: #22a3c4;
 $buttonBorder: #22a3c4;
 $inputText: #1e92df;
-$flashRed: rgb(253, 67, 107);
+$inputText--flash: #1e92df5a;
+$flashRed: rgba(253, 67, 107, 0.500);
+$flashGreen: rgba(55, 203, 94, 0.500);
 /*************************************************/
 
 @mixin border-radius($radius) {
@@ -97,7 +100,10 @@ body {
   font-family: 'Open Sans', sans-serif;
   color: $welcome-text;
   line-height: 1.4;
-  display: none;
+  
+  &--hide {
+    display: none;
+  }
 }
 
 .todo {
@@ -162,8 +168,9 @@ body {
   &__cross {
     visibility: hidden;
     font-size: 1.5rem;
-    color: rgb(63, 112, 17);
+    color: $todo__cross;
     z-index: 10;
+    margin-top: 5px;
 
     &--done {
       visibility: visible;
@@ -207,11 +214,23 @@ body {
     background: $inputField;
     color: $inputText;
     font-size: 1.2rem;
+    outline: none;
     @include border-radius(15px);
+
+    &::-webkit-search-cancel-button{
+      position: relative;
+      right: 10px;
+      opacity: 0.7;
+    }
 
     &--flashRed {
       background: $flashRed;
       border-color: $flashRed;
+    }
+
+    &--flashGreen {
+      background: $flashGreen;
+      border-color: $flashGreen;
     }
   }
 
@@ -226,12 +245,14 @@ body {
     &--flashRed {
       background: $flashRed;
       border-color: $flashRed;
-      color: rgb(244, 236, 216);
+      color: $inputText--flash;
     }
-  }
 
-  &--flashRed {
-    // background: $flashRed;
+    &--flashGreen {
+      background: $flashGreen;
+      border-color: $flashGreen;
+      color: $inputText--flash;
+    }
   }
 }
 
