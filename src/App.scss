@@ -11,22 +11,23 @@ $todo_text: #1a67c5;
 $circle_bg: #ba89e7;
 
 $todo_bg-done: #51bd1f;
+$todo_bg-done-selected: #f8d68c;
 $todo_border-done: #51bd1f;
 $todo_text-done: #51bd1f;
 $circle_bg-done: #51bd1f;
 $todo_cross: rgba(26, 104, 199, 0.7);
 $todo_cross-hover: #3665a0;
 
-$showInputButton: #f3f1ec;
+$showInputButton: #f3e4c1;
 $showInputButton_text: #408f1b;
 
-
 $inputContainer_bg: #93dbfc;
-$inputField: #f1d8a1;
-$inputButton: #f1d8a1;
-$inputBorder: #22a3c4;
-$buttonBorder: #22a3c4;
+$inputField: #f1ddb0;
+$inputButton: #f1ddb0;
+$inputBorder: rgba(64, 143, 27, 0.8);
+$buttonBorder: rgba(64, 143, 27, 0.8);
 $inputText: #1e92df;
+$inputButtonText: #418f1d;
 $inputText-flash: #1e92df5a;
 $flashRed: rgba(253, 67, 107, 0.500);
 $flashGreen: rgba(55, 203, 94, 0.500);
@@ -111,6 +112,14 @@ body {
   }
 }
 
+.todo-animation{
+  order: 2;
+
+  &--done {
+    order: 3;
+  }
+}
+
 .todo {
   width: 18rem;
   min-width: 18rem;
@@ -119,7 +128,6 @@ body {
   min-height: 4.5rem;
   max-height: 4.5rem;
   text-align: center;
-  order: 3;
   background: $todo_bg;
   border: 5px solid $todo_border;
   display: flex;
@@ -138,6 +146,10 @@ body {
     order: 4;
     opacity: 0.4;
     z-index: 2;
+
+    &:hover{
+      background: $todo_bg-done-selected;
+    }
   }
 
   &__circle {
@@ -199,7 +211,7 @@ body {
   justify-content: center;
   background-color: $showInputButton;
   color: $showInputButton_text;
-  border: 4.3px solid $showInputButton_text;
+  border: 3px solid $showInputButton_text;
   z-index: 100;
   position: absolute;
   transform: translate(285px, 720px);
@@ -235,7 +247,6 @@ body {
   border-right: none;
   box-shadow: 0px 0 10px #8548a1cc;
   z-index: 10;
-
 
   &__form {
     width: 82%;
@@ -275,7 +286,7 @@ body {
     width: 18%;
     border: 3px solid $buttonBorder;
     font-size: 1.8rem;
-    color: $inputText;
+    color: $inputButtonText;
     background: $inputButton;
     line-height: 20px;
     display: flex;
@@ -361,7 +372,6 @@ body {
   }
 }
 
-
 @media all and (max-width: 330px) {
   .todo {
     width: 14rem;
@@ -380,9 +390,5 @@ body {
   .welcomeTip {
     font-size: 0.8rem;
     margin-top: 100px;
-  }
-
-  .showInputButton {
-    // transform: translate(230px, 480px);
   }
 }

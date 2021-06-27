@@ -1,7 +1,5 @@
-/* eslint-disable */
-
 import './App.scss';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './components/Header'; // eslint-disable-line no-unused-vars
 import Welcome from './components/Welcome'; // eslint-disable-line no-unused-vars
 import Input from './components/Input'; // eslint-disable-line no-unused-vars
@@ -29,29 +27,32 @@ const App = () => {
   const showInputContainer = () => {
     toggleShowButton(false);
     toggleShowInput(true);
-    document.forms[0].elements[0].focus();
-  }
+    setTimeout(() => {
+      document.forms[0].elements[0].focus();
+    }, 300);
+  };
 
   const hideInputContainer = () => {
     toggleShowButton(true);
     toggleShowInput(false);
-  }
+  };
 
   const handleClick = e => {
     if (!e.target.classList.contains('insideInput')) {
       hideInputContainer();
     }
-  }
+  };
 
   useEffect(() => {
     getFromLocalStorage();
-    document.addEventListener("mousedown", handleClick);
+    document.addEventListener('mousedown', handleClick);
 
     return () => {
-      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener('mousedown', handleClick);
     };
-  }, []);
-  
+  }, []); // eslint-disable-line
+
+  // eslint-disable-next-line
   useEffect(() => {
     saveToLocalstorage();
     toggleWelcome(todoDB.length === 0);

@@ -1,8 +1,7 @@
-/* eslint-disable */
 import { useSpring, animated } from 'react-spring';
 
 const Input = ({
-  todoDB, updateTodoDB, input, setInput, showInput,
+  todoDB, updateTodoDB, showInput,
 }) => {
   const emojiParser = text => {
     const emojiRegex = /\p{Extended_Pictographic}/u;
@@ -12,10 +11,6 @@ const Input = ({
     }
 
     return '📝';
-  };
-
-  const inputHandler = e => {
-    setInput(e.target.value);
   };
 
   const flashRed = () => {
@@ -53,8 +48,9 @@ const Input = ({
   };
 
   const submitHandler = e => {
+    const inputField = document.querySelector('.inputContainer__input');
     e.preventDefault();
-    let description = input;
+    let description = inputField.value;
 
     if (description.length === 0) {
       flashRed();
@@ -64,7 +60,7 @@ const Input = ({
     const emoji = emojiParser(description);
     description = description.replace(/\p{Extended_Pictographic}/u, '');
     flashGreen();
-    setInput('');
+    inputField.value = '';
 
     updateTodoDB([
       ...todoDB, {
@@ -78,14 +74,14 @@ const Input = ({
       duration: 160,
     },
     opacity: showInput ? 1 : 0,
-    transform: showInput ? `translateY(0%)` : `translateY(100%)`,
+    transform: showInput ? 'translateY(0%)' : 'translateY(100%)',
   });
 
   return (
     <animated.div style={animation} className="inputContainer__animation insideInput">
       <aside className="inputContainer insideInput">
         <form className="inputContainer__form insideInput">
-          <input onChange={inputHandler} value={input} type="search" className="inputContainer__input insideInput"></input>
+          <input type="search" className="inputContainer__input insideInput" maxLength="20"></input>
           <button onClick={submitHandler} type="submit" className="inputContainer__button insideInput"><span className="inputButton__span insideInput">+</span></button>
         </form>
       </aside>
