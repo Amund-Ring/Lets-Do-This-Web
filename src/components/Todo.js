@@ -1,3 +1,7 @@
+/* eslint-disable */
+
+import { useSpring, animated } from 'react-spring';
+
 const Todo = ({ todo, todoDB, updateTodoDB }) => {
   const toggleCompleted = () => {
     updateTodoDB(todoDB.map(t => {

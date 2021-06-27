@@ -1,5 +1,8 @@
+/* eslint-disable */
+import { useSpring, animated } from 'react-spring';
+
 const Input = ({
-  todoDB, updateTodoDB, input, setInput,
+  todoDB, updateTodoDB, input, setInput, showInput,
 }) => {
   const emojiParser = text => {
     const emojiRegex = /\p{Extended_Pictographic}/u;
@@ -70,16 +73,24 @@ const Input = ({
     ]);
   };
 
+  const animation = useSpring({
+    config: {
+      duration: 160,
+    },
+    opacity: showInput ? 1 : 0,
+    transform: showInput ? `translateY(0%)` : `translateY(100%)`,
+  });
+
   return (
-    <>
-      <aside className="inputContainer">
+    <animated.div style={animation} className="inputContainer__animation">
+      <aside className="inputContainer insideInput">
         <form className="inputContainer__form">
-          <input onChange={inputHandler} value={input} type="search" className="inputContainer__input"></input>
-          <button onClick={submitHandler} type="submit" className="inputContainer__button">+</button>
+          <input onChange={inputHandler} value={input} type="search" className="inputContainer__input insideInput"></input>
+          <button onClick={submitHandler} type="submit" className="inputContainer__button insideInput"><span className="inputButton__span insideInput">+</span></button>
         </form>
       </aside>
-      <span className="paddingBlock"></span>
-    </>
+      <span className={`paddingBlock ${showInput ? '' : 'paddingBlock--hide'}`}></span>
+    </animated.div>
   );
 };
 

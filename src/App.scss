@@ -2,8 +2,8 @@
 $body_bg: linear-gradient(315deg, #465dad 0%, #e79ee7 100%);;
 $primary_bg: linear-gradient(315deg, #195dc4 0%, #2a91cc 100%);
 $welcome_text: #ebebeb;
-
 $header: #f3f3f3;
+
 $todo_bg: #f8d68c;
 $todo_bg-selected: #f5ce80;
 $todo_border: #43daf5;
@@ -15,7 +15,11 @@ $todo_border-done: #51bd1f;
 $todo_text-done: #51bd1f;
 $circle_bg-done: #51bd1f;
 $todo_cross: rgba(26, 104, 199, 0.7);
-$todo_cross-hover: #ee6516;
+$todo_cross-hover: #3665a0;
+
+$showInputButton: #f3f1ec;
+$showInputButton_text: #408f1b;
+
 
 $inputContainer_bg: #93dbfc;
 $inputField: #f1d8a1;
@@ -183,6 +187,37 @@ body {
   }
 }
 
+.showInputButton {
+  order: 8;
+  border-radius: 50%;
+  width: 4.2rem;
+  height: 4.2rem;
+  font-size: 3rem;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $showInputButton;
+  color: $showInputButton_text;
+  border: 4.3px solid $showInputButton_text;
+  z-index: 100;
+  position: absolute;
+  transform: translate(285px, 720px);
+  box-shadow: 0 0 1.5px 0.3px white;
+
+  &--hide {
+    display: none;
+  }
+}
+
+.inputContainer__animation{
+  width: 100%;
+  order: 10;
+  margin-top: auto;
+  position: sticky;
+  bottom: -1px;
+}
+
 .inputContainer {
   background: $inputContainer_bg;
   width: 100%;
@@ -195,11 +230,12 @@ body {
   border-left: none;
   border-right: none;
   box-shadow: 0px 0 10px #8548a1cc;
-  order: 9;
   z-index: 10;
-  margin-top: auto;
-  position: sticky;
-  bottom: -1px;
+  
+
+  &--hide{
+    display: none;
+  }
 
   &__form {
     width: 82%;
@@ -241,6 +277,10 @@ body {
     font-size: 1.8rem;
     color: $inputText;
     background: $inputButton;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     @include border-radius(15px);
 
     &--flashRed {
@@ -264,12 +304,28 @@ body {
 @-moz-document url-prefix() {
   .paddingBlock {
     display: inline;
-    opacity: 0.3;
+    visibility: hidden;
     width: 100%;
     height: 6.5rem;
     min-height: 6.5rem;
-    order: 8;
+    order: 9;
     @include border-radius(0 0 30px 30px);
+
+    &--hide {
+      display: none;
+    }
+  }
+
+  .inputButton__span {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+  }
+
+  .showInputButton__span {
+    width: 30px;
+    height: 30px;
   }
 }
 
@@ -281,9 +337,8 @@ body {
 
   .App {
     width: 375px;
-    // height: 80%;
-    min-height: 620px;
-    max-height: 812px;
+    height: 620px;
+    height: 812px;
     @include border-radius(30px);
     box-shadow: 0 0 0 3px black,
                 0 0 0 14px rgb(238, 219, 250);
@@ -299,6 +354,13 @@ body {
     @include border-radius(0px 0px 30px 30px);
   }
 }
+
+@media all and (max-width: 500px) {
+  .showInputButton {
+    transform: translate(74vw, 85vh)
+  }
+}
+
 
 @media all and (max-width: 330px) {
   .todo {
@@ -318,5 +380,9 @@ body {
   .welcomeTip {
     font-size: 0.8rem;
     margin-top: 100px;
+  }
+
+  .showInputButton {
+    // transform: translate(230px, 480px);
   }
 }
