@@ -216,6 +216,10 @@ body {
   margin-top: auto;
   position: sticky;
   bottom: -1px;
+
+  &--hide {
+    display: none;
+  }
 }
 
 .inputContainer {
@@ -231,11 +235,7 @@ body {
   border-right: none;
   box-shadow: 0px 0 10px #8548a1cc;
   z-index: 10;
-  
 
-  &--hide{
-    display: none;
-  }
 
   &__form {
     width: 82%;

@@ -29,6 +29,7 @@ const App = () => {
   const showInputContainer = () => {
     toggleShowButton(false);
     toggleShowInput(true);
+    document.forms[0].elements[0].focus();
   }
 
   const hideInputContainer = () => {

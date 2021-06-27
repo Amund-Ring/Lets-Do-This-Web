@@ -82,14 +82,14 @@ const Input = ({
   });
 
   return (
-    <animated.div style={animation} className="inputContainer__animation">
+    <animated.div style={animation} className="inputContainer__animation insideInput">
       <aside className="inputContainer insideInput">
-        <form className="inputContainer__form">
+        <form className="inputContainer__form insideInput">
           <input onChange={inputHandler} value={input} type="search" className="inputContainer__input insideInput"></input>
           <button onClick={submitHandler} type="submit" className="inputContainer__button insideInput"><span className="inputButton__span insideInput">+</span></button>
         </form>
       </aside>
-      <span className={`paddingBlock ${showInput ? '' : 'paddingBlock--hide'}`}></span>
+      <span className={`paddingBlock ${showInput ? '' : 'paddingBlock--hide '}`}></span>
     </animated.div>
   );
 };
