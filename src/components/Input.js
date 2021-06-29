@@ -59,6 +59,8 @@ const Input = ({
 
     const emoji = emojiParser(description);
     description = description.replace(/\p{Extended_Pictographic}/u, '');
+    description = description.replace(' 🏻', '');
+    description = description.replace('‍♂️', '');
     flashGreen();
     inputField.value = '';
 
