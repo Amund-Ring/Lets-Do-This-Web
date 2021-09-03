@@ -2,3 +2,4 @@
   "extends": "salt",
   "parser": "babel-eslint"
 }
+comment

@@ -21,4 +21,3 @@ const Welcome = ({ showWelcome }) => {
 };
 
 export default Welcome;
-// Comment
