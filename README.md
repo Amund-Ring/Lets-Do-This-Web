@@ -1,4 +1,4 @@
-# Fun Todo App with Emoji Support
+# Let's Do This - Todo App
 
 Created with with JavaScript and React.
 
